@@ -1,6 +1,9 @@
 # Environment variables
 .env
 
+# Streamlit secrets (should never be committed)
+.streamlit/secrets.toml
+
 # Database
 database.db
 
