@@ -1,0 +1,48 @@
+Architecture Diagram for PPT:
+
+┌─────────────────┐
+│   User (Student)│
+└─────────┬───────┘
+          │
+          ▼
+┌─────────────────┐
+│ Streamlit UI    │
+│ - Upload Audio  │
+│ - Display Results│
+│ - History View  │
+└─────────┬───────┘
+          │
+          ▼
+┌─────────────────┐
+│ Python Backend  │
+│ - app.py        │
+│ - utils.py      │
+└─────────┬───────┘
+          │
+    ┌─────┴─────┐
+    │           │
+    ▼           ▼
+┌─────────┐ ┌─────────┐
+│Whisper  │ │OpenAI   │
+│API      │ │GPT API  │
+│(Speech  │ │(Content │
+│to Text) │ │Generation)
+└─────────┘ └─────────┘
+    │           │
+    └─────┬─────┘
+          ▼
+┌─────────────────┐
+│ SQLite Database │
+│ - lectures      │
+│ - transcripts   │
+│ - summaries     │
+│ - quizzes       │
+│ - flashcards    │
+└─────────────────┘
+
+Data Flow:
+1. User uploads audio → Streamlit UI
+2. Audio → Whisper API → Transcript
+3. Transcript → OpenAI GPT → Study Materials
+4. All data → SQLite Database
+5. Results → Streamlit UI → User
